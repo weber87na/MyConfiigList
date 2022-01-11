@@ -1,8 +1,11 @@
 # MyConfiigList
 
+## Ideavim
+`.ideavimrc`
+
 ## visual studio
-_vsvimrc
+`_vsvimrc`
 
 ## vscode
-keybindings.json
-settings.json
+`keybindings.json`
+`settings.json`
