@@ -10,6 +10,30 @@ set rnu                 " show relative line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 set surround            " use surround shortcuts
+set mini-ai
+"set textobj-entire "textobj-entire
+"set argtextobj "argtextobj
+"set functiontextobj "functiontextobj 需要額外安裝這個外掛
+set peekaboo
+set anyobject
+set dial
+
+let g:dial_include = "basic,numbers,dates,java,python:async,markdown:task_item"
+" Map Ctrl+A to increment
+nnoremap <C-a> :DialIncrement<cr>
+
+" Map Ctrl+X to decrement  
+nnoremap <C-x> :DialDecrement<cr>
+
+
+
+
+"1.8新增功能快速移動到 html tag 頭尾
+set matchit
+
+"交換單字或是行
+set exchange
+
 set commentary "vim-commentary
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
@@ -28,7 +52,6 @@ set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set clipboard=unnamedplus  "X clipboard as unnamed
 set NERDTree
-set matchit
 
 "press kj to exit insert mode
 "imap kj <Esc>
@@ -58,6 +81,8 @@ noremap ,ii :action GotoSymbol<CR>
 noremap <C-]> :action GotoImplementation<CR>
 noremap ,xz :action ActivateTerminalToolWindow<CR>
 
+
+
 " ideavim don't support numberic character in hotkey in 0.55
 " it's fixed in 0.55.1
 noremap ,x1 <C-W>o
@@ -84,8 +109,29 @@ imap zl <End>
 nmap zh ^
 imap zh <Esc>^i
 
-nmap z; $a;<Esc>
-imap z; <Esc>$a;
+"如果 js, c# 用分號
+"nmap z; $a;<Esc>
+"imap z; <Esc>$a;
+
+"如果 python 用冒號
+"nmap z; $a:<Esc>
+"imap z; <Esc>$a:
+
+" 根據 IDE 名稱做不同設定
+if &ide =~? 'DataGrip'
+  " DataGrip插入分號
+  nmap z; $a;<Esc>
+  imap z; <Esc>$a;
+elseif &ide =~? 'Pycharm'
+  " PyCharm: z; 插入冒號
+  nmap z; $a:<Esc>
+  imap z; <Esc>$a:
+else
+  " fallback: 預設為分號（可改成你想要的）
+  nmap z; $a;<Esc>
+  imap z; <Esc>$a;
+endif
+
 
 nmap z, $a,<Esc>
 imap z, <Esc>$a,
