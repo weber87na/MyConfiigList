@@ -1,27 +1,23 @@
 // 將按鍵繫結關係放在此檔案中以覆寫預設auto[]
 [
-    {
-        "key": "ctrl+shift+k",
-        "command": "editor.emmet.action.removeTag"
-    },
-    {
-        "key": "alt+w",
-        "command": "editor.emmet.action.wrapWithAbbreviation"
-    },
+	{
+		"key": "alt+w",
+		"command": "editor.emmet.action.wrapWithAbbreviation"
+	},
 	{
 		"key": "alt+i",
 		"command": "editor.emmet.action.wrapIndividualLinesWithAbbreviation"
 	},
-    {
-        "key": "alt+j",
-        "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "alt+k",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
+	{
+		"key": "alt+j",
+		"command": "selectNextSuggestion",
+		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "alt+k",
+		"command": "selectPrevSuggestion",
+		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+	},
 	//menu 選擇時 alt+j alt+k 上下移動
 	{
 		"key": "alt+j",
@@ -33,18 +29,58 @@
 		"command": "workbench.action.quickOpenSelectPrevious",
 		"when": "inQuickOpen"
 	},
+	//quick fix alt+j alt+k 上下移動
 	{
-		"key": "ctrl+alt+m",
-		"command": "workbench.action.toggleMaximizedPanel"
+		"key": "alt+k",
+		"when": "codeActionMenuVisible",
+		"command": "selectPrevCodeAction"
 	},
 	{
-		"key": "ctrl+f", "command": "",
+		"key": "alt+j",
+		"when": "codeActionMenuVisible",
+		"command": "selectNextCodeAction"
+	},
+	{
+		"key": "shift+tab",
+		"when": "codeActionMenuVisible",
+		"command": "selectPrevCodeAction"
+	},
+	{
+		"key": "tab",
+		"when": "codeActionMenuVisible",
+		"command": "selectNextCodeAction"
+	},
+	//如果檔案為 python 則加入冒號
+	//{
+	//	"key": "z ;",
+	//	"command": "vim.remap",
+	//	"when": "editorTextFocus && editorLangId == 'python' && vim.mode == 'Insert'",
+	//	"args": {
+	//		"after": ["<Esc>", "$", "a", ":"]
+	//	}
+	//},
+	//{
+	//	"key": "z ;",
+	//	"command": "vim.remap",
+	//	"when": "editorTextFocus && editorLangId == 'python' && vim.mode == 'Normal'",
+	//	"args": {
+	//		"after": ["<Esc>", "$", "a", ":", "<Esc>"]
+	//	}
+	//},
+	//https://stackoverflow.com/questions/42796887/switch-focus-between-editor-and-integrated-terminal-in-visual-studio-code
+	// Toggle between terminal and editor focus
+	{
+		"key": "ctrl+`",
+		"command": "workbench.action.terminal.focus"
+	},
+	{
+		"key": "ctrl+`",
+		"command": "workbench.action.focusActiveEditorGroup",
 		"when": "terminalFocus"
 	},
-	//hippie
 	{
-        "key": "alt+/",
-        "command": "simpleAutocomplete.next",
-        "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
-    }
+		"key": "escape",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "explorerViewletFocus"
+	}
 ]
